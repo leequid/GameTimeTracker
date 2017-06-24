@@ -1,0 +1,20 @@
+package entities;
+
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+public class Time {
+	private int id;
+	
+	
+	@Column(name="start_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date endDate;
+	
+	@Column(name="end_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date endTime;
+}

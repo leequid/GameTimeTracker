@@ -1,0 +1,64 @@
+package data;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import entities.Game;
+import entities.Time;
+
+public class GameDAOImpl implements GameDAO{
+
+	@PersistenceContext
+	private EntityManager em;
+	
+	@Override
+	public List<Game> index() {
+		String query = "select g From games g";
+		return em.createQuery(query,Game.class).getResultList();
+	}
+
+	@Override
+	public Game show(int id) {
+		
+		return em.find(Game.class, id);
+	}
+
+	@Override
+	public Game create(Game game) {
+		em.persist(game);
+		return ;
+	}
+
+	@Override
+	public Game update(int id, Game game) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean destroy(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Time> showTimeList(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Time createTime(int id, Time t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean destroyGame(int id, int questid) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

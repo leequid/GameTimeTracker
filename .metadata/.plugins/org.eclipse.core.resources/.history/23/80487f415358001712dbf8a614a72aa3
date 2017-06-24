@@ -1,0 +1,40 @@
+package data;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import entities.Game;
+import entities.Time;
+
+public class TimeDAOImpl implements TimeDAO{
+
+	@PersistenceContext
+	private EntityManager em;
+	
+	@Override
+	public List<Time> index() {
+		String query = "select t From time t";
+		return em.createQuery(query,Time.class).getResultList();
+	}
+
+	@Override
+	public Time show(int id) {
+		// TODO Auto-generated method stub
+		return em.find(Time.class, id);
+	}
+
+	@Override
+	public Time create(Time time) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean destroy(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

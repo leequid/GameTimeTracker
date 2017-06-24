@@ -1,0 +1,105 @@
+package controllers;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import data.GameDAO;
+import data.TimeDAO;
+import entities.Game;
+import entities.Time;
+
+@RestController
+public class GameManageController implements Ctrl {
+	@Autowired
+	private GameDAO gdao;
+	@Autowired
+	private TimeDAO tdao;
+
+	@RequestMapping(path = "ping", method = RequestMethod.GET)
+	public String ping() {
+		return "pong";
+	}
+
+	@RequestMapping(path = "games", method = RequestMethod.GET)
+	public List<Game> index() {
+		return gdao.index();
+	}
+
+	@RequestMapping(path = "games/{id}", method = RequestMethod.GET)
+	public Game show(@PathVariable int id) {
+		// TODO Auto-generated method stub
+		return gdao.show(id);
+	}
+
+	@RequestMapping(path = "games", method = RequestMethod.POST)
+	public Game create(@RequestBody String gameJSON, HttpServletResponse res) {
+		ObjectMapper mapper = new ObjectMapper();
+		Game mapped = null;
+
+		if (gameJSON == null || gameJSON.equals("")) {
+			res.setStatus(400);
+		} else {
+			try {
+				mapped = mapper.readValue(gameJSON, Game.class);
+				gdao.create(mapped);
+				res.setStatus(200);
+			} catch (Exception e) {
+				res.setStatus(404);
+			}
+
+			return mapped;
+		}
+		return null;
+	}
+
+	
+	@RequestMapping(path = "games/{id}", method = RequestMethod.PUT)
+	public Game update(@PathVariable int id, @RequestBody String quizJSON, HttpServletResponse res) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean destroy(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public List<Time> showTimeList(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Time> tindex() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Time tshow(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Time create(Time time) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean tdestroy(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	
+
+}
