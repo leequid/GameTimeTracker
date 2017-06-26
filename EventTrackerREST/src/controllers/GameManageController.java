@@ -123,7 +123,7 @@ public class GameManageController implements Ctrl {
 		return false;
 	}
 
-	@RequestMapping(path = "games/{id}/time{tid}", method = RequestMethod.PUT)
+	@RequestMapping(path = "games/{id}/time/{tid}", method = RequestMethod.PUT)
 	public Time addEndTime(@PathVariable int tid) {
 		// TODO Auto-generated method stub
 		return tdao.addEndTime(tid);

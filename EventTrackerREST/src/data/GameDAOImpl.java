@@ -38,20 +38,27 @@ public class GameDAOImpl implements GameDAO{
 
 	@Override
 	public Game update(int id, Game game) {
+		System.out.println(game);
 		Game g = em.find(Game.class, id);
 		g.setCategory(game.getCategory());
 		g.setName(game.getName());
-		g.setCompany(g.getCompany());
+		g.setCompany(game.getCompany());
 		g.setTimeList(game.getTimeList());
+		System.out.println(g);
 		return g;
 	}
 
 	@Override
 	public boolean destroy(int id) {
 		Game g = em.find(Game.class, id);
+		
 		if (g == null) {
 			return false;
 		} else {
+			List<Time> t = g.getTimeList();
+			for (Time time : t) {
+				em.remove(time);
+			}
 			em.remove(g);
 			return true;
 		}

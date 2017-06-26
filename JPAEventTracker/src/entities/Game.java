@@ -22,6 +22,7 @@ public class Game {
 	private String name;
 
 	private String category;
+	
 	private String company;
 	
 	@OneToMany(mappedBy="game", fetch=FetchType.EAGER)
