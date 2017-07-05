@@ -1,0 +1,22 @@
+
+.danger {
+	font-size:200%;
+  background-color: red;
+}
+.warning {
+	font-size:200%;
+  background-color: yellow;
+}
+.safe {
+	font-size:200%;
+  background-color: green;
+}
+
+.done{
+	text-decoration: line-through;
+	color:gray;
+}
+
+.notDone{
+	
+}

@@ -65,12 +65,25 @@ public class Game {
 		return id;
 	}
 
-	
 	@Override
 	public String toString() {
-		return "Game [id=" + id + ", name=" + name + ", category=" + category + ", company=" + company + ", timeList="
-				+ timeList + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Game [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", category=");
+		builder.append(category);
+		builder.append(", company=");
+		builder.append(company);
+		builder.append(", timeList=");
+		builder.append(timeList);
+		builder.append("]");
+		return builder.toString();
 	}
+
+	
+
 
 
 

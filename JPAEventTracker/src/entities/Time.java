@@ -36,10 +36,6 @@ public class Time {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date endTime;
 	
-	@Column(name = "time_elapsed")
-	private Date timeElapsed;
-	
-	
 
 	
 
@@ -52,13 +48,7 @@ public class Time {
 		this.startTime = startTime;
 	}
 
-	public Date getTimeElapsed() {
-		return timeElapsed;
-	}
 
-	public void setTimeElapsed(Date timeElapsed) {
-		this.timeElapsed = timeElapsed;
-	}
 
 	public Game getGame() {
 		return game;
@@ -92,9 +82,10 @@ public class Time {
 
 	@Override
 	public String toString() {
-		return "Time [id=" + id + ", game=" + game + ", startTime=" + startTime + ", endTime=" + endTime
-				+ ", timeElapsed=" + timeElapsed + "]";
+		return "Time [id=" + id + ", game=" + game + ", startTime=" + startTime + ", endTime=" + endTime + "]";
 	}
+
+
 	
 	
 

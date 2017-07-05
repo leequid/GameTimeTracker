@@ -38,13 +38,11 @@ public class GameDAOImpl implements GameDAO{
 
 	@Override
 	public Game update(int id, Game game) {
-		System.out.println(game);
+		System.out.println("update!!!!"+game);
 		Game g = em.find(Game.class, id);
 		g.setCategory(game.getCategory());
 		g.setName(game.getName());
 		g.setCompany(game.getCompany());
-		g.setTimeList(game.getTimeList());
-		System.out.println(g);
 		return g;
 	}
 

@@ -15,11 +15,11 @@
 
     <properties>
       <property name="javax.persistence.jdbc.url"
-        value="jdbc:mysql://localhost:3306/eventdb" />
+        value="jdbc:mysql://localhost:3306/eventdb2" />
       <property name="javax.persistence.jdbc.user"
-        value="event"/>
+        value="root"/>
       <property name="javax.persistence.jdbc.password"
-        value="event" />
+        value="root" />
       <property name="javax.persistence.jdbc.driver"
         value="com.mysql.jdbc.Driver" />
       <property name="hibernate.show_sql" value="false" />

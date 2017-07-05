@@ -1,0 +1,37 @@
+
+<div ng-show="vm.showMain">
+<table>
+<tr><th>Game Name</th><th>Game Company</th><th>Game Category</th><th>Add game</th><th>Hours Played</th><th>Minutes Played</th><th>Seconds Played</th><th>Remove Game</th><th>Edit Game</th></tr>
+<tr ng-repeat="g in vm.gList"><td>{{g.name}}</td><td>{{g.company}}</td><td>{{g.category}}</td>
+<td><button ng-click="vm.showPlay=true;vm.showMain=false;vm.startPlay(g.id); vm.currentPlay = g;">Play Game</button></td> 
+<td>{{g.hour}} Hr</td>
+<td>{{g.minute}} Min</td>
+<td>{{g.second}} Sec</td>
+<td><button ng-click="vm.deleteGame(g.id)">delete</button></td>
+<td><button ng-click="vm.editGame = g; vm.showEdit=true; vm.showMain=false;">edit</button></td>
+</tr>
+</table>
+
+<button ng-click="vm.showCreate=true;vm.showMain=false">Add Game</button>
+</div>
+
+<div ng-show="vm.showCreate">
+<input type="text" placeholder="Game Name" ng-model="game.name">
+<input type="text" placeholder="Game Company" ng-model="game.company">
+<input type="text" placeholder="Game Category" ng-model="game.category">
+<button ng-click="vm.showCreate=false;vm.showMain=true;vm.addGame(game)">Submit</button>
+<button ng-click="vm.showCreate=false;vm.showMain=true">Go Back</button>
+</div>
+
+
+<div ng-show="vm.showEdit">
+<input type="text" ng-model="vm.editGame.name">
+<input type="text" ng-model="vm.editGame.company">
+<input type="text" ng-model="vm.editGame.category">
+<button ng-click="vm.test();vm.edit();vm.showEdit = false; vm.showMain=true">Submit Edit</button>
+</div>
+
+<div ng-show="vm.showPlay">
+You are playing: {{vm.currentPlay.name}}
+<button ng-click="vm.showPlay=false; vm.showMain=true;vm.stopPlay()">Stop playing</button>
+</div>
